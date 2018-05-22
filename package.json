@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "typescript": "^2.8.3"
+  },
+  "devDependencies": {
+    "@types/tape": "^4.2.32",
+    "tap-diff": "^0.1.1",
+    "tape": "^4.9.0",
+    "ts-node": "^6.0.3",
+    "tslint": "^5.10.0"
+  },
+  "scripts": {
+    "test": "ts-node node_modules/tape/bin/tape test/**/*.spec.ts | tap-diff"
+  }
+}
