@@ -1,4 +1,4 @@
-import {Ground} from './';
+import {Ground} from '.';
 
 export type Board = {
   width: 8

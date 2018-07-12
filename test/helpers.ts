@@ -1,6 +1,6 @@
 import {TetrominoTypeName, Tetromino, Position, BlockState, Rendering, RenderedBlockState, NormalBlockState, Game} from '../types';
 
-const printBlockState = (info: RenderedBlockState) => (info as NormalBlockState).colour[0];
+const printBlockState = (info: RenderedBlockState) => info.colour === 'grey' ? 'G' : (info as NormalBlockState).colour[0];
 
 export const makeTetromino = (type: TetrominoTypeName, clrs: string, frameNumber: number, position: Position):Tetromino => ({
   id: type,
@@ -27,10 +27,12 @@ export const stringifyRender = (rnd: Rendering, width: number, height: number): 
   ).reverse();
 };
 
-export const makeGame = (...tetrominoes: Tetromino[]): Game => ({
-  ground: {},
+export const makeGame = (tetrominoes: Tetromino[], height = 5, width = 5, ground = false): Game => ({
+  ground: ground ? Array.from(Array(width)).reduce((mem, u, i) => ({...mem, [i+'_'+i]: {type: 'block', colour: 'grey'}}), {}) : {},
   tetrominoes: tetrominoes.reduce((mem, tetr) => ({
     ...mem,
     [tetr.id]: tetr
-  }), {})
+  }), {}),
+  height,
+  width
 });

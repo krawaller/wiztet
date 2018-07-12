@@ -1,4 +1,4 @@
-import {BlockState, TetrominoFrame, Position} from './';
+import {BlockState, TetrominoFrame, Position} from '.';
 
 export type TetrominoId = string;
 

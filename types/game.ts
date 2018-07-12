@@ -1,8 +1,10 @@
-import {Tetromino, Ground} from './';
+import {Tetromino, Ground} from '.';
 
 export type Game = {
-    tetrominoes: {
-        [tetrId: string]: Tetromino
-    }
-    ground: Ground
+  tetrominoes: {
+    [tetrId: string]: Tetromino
+  }
+  ground: Ground,
+  height: number,
+  width: number
 };

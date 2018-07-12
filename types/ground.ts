@@ -1,4 +1,4 @@
-import {BlockState} from './';
+import {BlockState} from '.';
 
 export type Ground = {
   [key: string]: BlockState

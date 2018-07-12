@@ -1,4 +1,4 @@
-import {Offset, Position} from './index';
+import {Offset, Position} from '.';
 
 export type TetrominoFrame = {
   blockPositions: Position[]

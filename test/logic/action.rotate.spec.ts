@@ -4,10 +4,10 @@ import * as test from 'tape';
 import {stringifyRender, makeTetromino, makeGame} from '../helpers';
 
 test('Rotating with nothing in the way', t => {
-  const game = makeGame(
+  const game = makeGame([
     makeTetromino('trad_j', 'bmoy', 0, [0, 0]),
     makeTetromino('trad_o', 'rrrr', 0, [2, 3]),
-  );
+  ]);
   t.deepEqual(
     stringifyRender(renderGame(game), 5, 5),
     [
@@ -37,10 +37,10 @@ test('Rotating with nothing in the way', t => {
 });
 
 test('Rotating with kick against other tetromino', t => {
-  const game = makeGame(
+  const game = makeGame([
     makeTetromino('trad_j', 'bmoy', 0, [0, 0]),
     makeTetromino('trad_o', 'rrrr', 0, [2, 2]),
-  );
+  ], 5, 5);
   t.deepEqual(
     stringifyRender(renderGame(game), 5, 5),
     [
@@ -68,3 +68,35 @@ test('Rotating with kick against other tetromino', t => {
 
   t.end();
 });
+
+test('Rotating with kick against wall', t => {
+  const game = makeGame(
+    [makeTetromino('trad_j', 'bmoy', 1, [-1, 0])],
+    4, 4
+  );
+  t.deepEqual(
+    stringifyRender(renderGame(game), 4, 4),
+    [
+      '    ',
+      'mb  ',
+      'o   ',
+      'y   '
+    ],
+    'initial game is what we think it is'
+  );
+
+  const afterRotate = executeAction(game, {type: 'ROTATEACTION', dir: 'right', target: 'trad_j'});
+  t.deepEqual(
+    stringifyRender(renderGame(afterRotate), 4, 4),
+    [
+      '    ',
+      '    ',
+      'yom ',
+      '  b '
+    ],
+    'we rotated with a kick to the right'
+  );
+
+  t.end();
+});
+

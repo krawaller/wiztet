@@ -1,4 +1,4 @@
-import {Position, TetrominoId} from './';
+import {Position, TetrominoId} from '.';
 
 export type BlockTypeName =
   | 'block'
@@ -28,7 +28,7 @@ export type RenderedBlockState = BlockState & {
 
 export type NormalBlockState = BasicBlockState & {
   type: 'block'
-  colour: 'magenta' | 'blue' | 'orange' | 'yellow' | 'green' | 'red' | 'purple'
+  colour: 'magenta' | 'blue' | 'orange' | 'yellow' | 'green' | 'red' | 'purple' | 'grey'
 }
 
 export type BlockInfo = {
