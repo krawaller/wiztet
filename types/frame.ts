@@ -1,6 +1,6 @@
 import {Offset, Position} from './index';
 
-export type Frame = {
+export type TetrominoFrame = {
   blockPositions: Position[]
   left: FrameTarget | null
   right: FrameTarget | null

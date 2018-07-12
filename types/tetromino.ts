@@ -1,4 +1,4 @@
-import {BlockState, Frame, Position} from './';
+import {BlockState, TetrominoFrame, Position} from './';
 
 export type TetrominoId = string;
 
@@ -11,7 +11,7 @@ export type Tetromino = {
 };
 
 export type TetrominoLibrary = {
-  [key in TetrominoTypeName]: TetrominoType<TetrominoTypeName> // bugs for key :(
+  [key in TetrominoTypeName]: TetrominoType<string> // want to use `key` as arg, but that bugs :/
 };
 
 export type TetrominoTypeName =
@@ -26,7 +26,7 @@ export type TetrominoTypeName =
 
 export type TetrominoType<T = TetrominoTypeName> = {
   name: T
-  frames: Frame[]
+  frames: TetrominoFrame[]
   width: number
   height: number
   initialBlockStates: BlockState[]
