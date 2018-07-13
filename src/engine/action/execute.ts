@@ -1,6 +1,6 @@
 
-import {Game, Rendering, Action} from '../../../types';
-import { rotateTetromino } from '.';
+import {Game, Action} from '../../../types';
+import { rotateTetromino } from './rotate';
 import { petrify } from './petrify';
 import { shift } from './shift';
 

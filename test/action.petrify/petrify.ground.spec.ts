@@ -2,7 +2,7 @@
 import * as test from 'tape';
 
 import {stringifyRender, makeTetromino, makeGame} from '../helpers';
-import { renderGame, executeAction } from '../../src/engine/logic';
+import { renderGame, executeAction } from '../../src/engine';
 
 test('petrifying pieces touching the ground', t => {
   const game = makeGame([

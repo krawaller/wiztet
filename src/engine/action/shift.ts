@@ -1,9 +1,7 @@
 
 import {Game, ShiftAction} from '../../../types';
-import { renderTetromino } from './render.tetromino';
-import { findCollisions } from './find.collisions';
-import { outOfBounds } from './detect.outofbounds';
-import { renderGround } from './render.ground';
+import { renderTetromino } from '../render/render.tetromino';
+import { outOfBounds } from '../helpers/detect.outofbounds';
 
 export const shift = (game: Game, action: ShiftAction): Game => {
   const offset = {

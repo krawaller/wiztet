@@ -1,10 +1,10 @@
 
 import {Game, RotateAction} from '../../../types';
-import { renderGame } from './render.game';
+import { renderGame } from '../render/render.game';
 import { tetrominoes } from '../data';
-import { renderTetromino } from './render.tetromino';
-import { findCollisions } from './find.collisions';
-import { outOfBounds } from './detect.outofbounds';
+import { renderTetromino } from '../render/render.tetromino';
+import { findCollisions } from '../helpers/find.collisions';
+import { outOfBounds } from '../helpers/detect.outofbounds';
 
 export const rotateTetromino = (game: Game, action: RotateAction): Game => {
   const tetromino = game.tetrominoes[action.target];

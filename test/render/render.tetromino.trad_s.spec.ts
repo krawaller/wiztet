@@ -1,13 +1,15 @@
-import {renderTetromino} from '../../src/engine/logic';
-import {Tetromino} from '../../types';
+import {renderGame} from '../../src/engine';
 import * as test from 'tape';
-import {stringifyRender,makeTetromino} from '../helpers';
+import {stringifyRender,makeTetromino,makeGame} from '../helpers';
 
-test('The renderTetromino function when called with a trad_s', t => {
+test('The trad_s frames', t => {
+
+  let game = makeGame([makeTetromino('trad_s', 'bmoy', 0, [1,1])]);
+
   const tetr = makeTetromino('trad_s', 'bmoy', 0, [1,1]);
 
   t.deepEqual(
-    stringifyRender(renderTetromino({...tetr, frameNumber: 0}), 4, 4),
+    stringifyRender(renderGame(game), 4, 4),
     [
       '  oy',
       ' bm ',
@@ -17,8 +19,10 @@ test('The renderTetromino function when called with a trad_s', t => {
     'frame 0 is correctly infoed'
   );
 
+  game.tetrominoes.trad_s.frameNumber = 1;
+
   t.deepEqual(
-    stringifyRender(renderTetromino({...tetr, frameNumber: 1}), 4, 4),
+    stringifyRender(renderGame(game), 4, 4),
     [
       '  b ',
       '  mo',
@@ -28,8 +32,10 @@ test('The renderTetromino function when called with a trad_s', t => {
     'frame 1 is correctly infoed'
   );
 
+  game.tetrominoes.trad_s.frameNumber = 2;
+
   t.deepEqual(
-    stringifyRender(renderTetromino({...tetr, frameNumber: 2}), 4, 4),
+    stringifyRender(renderGame(game), 4, 4),
     [
       '    ',
       '  mb',
@@ -39,8 +45,10 @@ test('The renderTetromino function when called with a trad_s', t => {
     'frame 2 is correctly infoed'
   );
 
+  game.tetrominoes.trad_s.frameNumber = 3;
+
   t.deepEqual(
-    stringifyRender(renderTetromino({...tetr, frameNumber: 3}), 4, 4),
+    stringifyRender(renderGame(game), 4, 4),
     [
       ' y  ',
       ' om ',

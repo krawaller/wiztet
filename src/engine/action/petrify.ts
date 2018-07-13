@@ -1,9 +1,9 @@
 
 import {Game, PetrifyAction} from '../../../types';
-import { renderTetromino } from './render.tetromino';
-import { findCollisions } from './find.collisions';
-import { outOfBounds } from './detect.outofbounds';
-import { renderGround } from './render.ground';
+import { renderTetromino } from '../render/render.tetromino';
+import { findCollisions } from '../helpers/find.collisions';
+import { outOfBounds } from '../helpers/detect.outofbounds';
+import { renderGround } from '../render/render.ground';
 
 export const petrify = (game: Game, action: PetrifyAction): Game => {
   let petrified;

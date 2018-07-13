@@ -1,5 +1,5 @@
 import {Game, Rendering, TetrominoId} from '../../../types';
-import { renderTetromino } from '.';
+import { renderTetromino } from './render.tetromino';
 import { renderGround } from './render.ground';
 
 export const renderGame = (game: Game, excludeTetrId?: TetrominoId): Rendering => {

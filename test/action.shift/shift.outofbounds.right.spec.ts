@@ -1,4 +1,4 @@
-import { renderGame, executeAction, renderTetromino } from '../../src/engine/logic';
+import { renderGame, executeAction } from '../../src/engine';
 import * as test from 'tape';
 import {stringifyRender, makeTetromino, makeGame} from '../helpers';
 
