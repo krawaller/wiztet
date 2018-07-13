@@ -6,33 +6,42 @@ import { outOfBounds } from './detect.outofbounds';
 import { renderGround } from './render.ground';
 
 export const petrify = (game: Game, action: PetrifyAction): Game => {
-  const renderedGround = renderGround(game.ground);
-  const petrified = Object.keys(game.tetrominoes).filter(key => {
-    const tetr = game.tetrominoes[key];
-    const stepDown = renderTetromino({
-      ...tetr,
-      position: [tetr.position[0], tetr.position[1] - 1]
-    });
-    return outOfBounds(stepDown, game.width, game.height) || detectCollision(stepDown, renderedGround).length;
-  });
-  return {
-    ...game,
-    tetrominoes: Object.keys(game.tetrominoes).reduce((mem, tetrId) => petrified.indexOf(tetrId) === -1 ? {
+  let petrified;
+  const steppedDown = Object.keys(game.tetrominoes).reduce((mem, tetrId) => {
+    const tetr = game.tetrominoes[tetrId];
+    return {
       ...mem,
-      [tetrId]: game.tetrominoes[tetrId]
-    } : mem, {}),
-    ground: {
-      ...game.ground,
-      ...petrified.reduce(
-        (mem, key) => Object.keys(renderTetromino(game.tetrominoes[key])).reduce(
-          (innerMem, pos) => ({
-            ...innerMem,
-            [pos]: {type: 'block', colour: 'grey'}
-          }),
-          mem
-        ),
-        {}
-      )
-    }
-  };
+      [tetrId]: renderTetromino({
+        ...tetr,
+        position: [tetr.position[0], tetr.position[1] - 1]
+      })
+    };
+  }, {});
+  do {
+    const renderedGround = renderGround(game.ground);
+    petrified = Object.keys(game.tetrominoes).filter(key =>
+       outOfBounds(steppedDown[key], game.width, game.height) || detectCollision(steppedDown[key], renderedGround).length
+    );
+    game = {
+      ...game,
+      tetrominoes: Object.keys(game.tetrominoes).reduce((mem, tetrId) => petrified.indexOf(tetrId) === -1 ? {
+        ...mem,
+        [tetrId]: game.tetrominoes[tetrId]
+      } : mem, {}),
+      ground: {
+        ...game.ground,
+        ...petrified.reduce(
+          (mem, key) => Object.keys(renderTetromino(game.tetrominoes[key])).reduce(
+            (innerMem, pos) => ({
+              ...innerMem,
+              [pos]: {type: 'block', colour: 'grey'}
+            }),
+            mem
+          ),
+          {}
+        )
+      }
+    };
+  } while (petrified.length);
+  return game;
 };
