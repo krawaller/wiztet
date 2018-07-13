@@ -2,7 +2,7 @@ import {Rendering, PositionString} from '../../../types';
 /*
 
 */
-export const outOfBounds = (rnd: Rendering, height: number, width: number): boolean => {
+export const outOfBounds = (rnd: Rendering, width: number, height: number): boolean => {
   // Position string: '2_5' (X_Y)
   // TODO - filter out Nothing
   return !!Object.keys(rnd).find(pos => {

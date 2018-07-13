@@ -17,7 +17,7 @@ export const rotateTetromino = (game: Game, action: RotateAction): Game => {
       frameNumber: targetFrame.targetFrame,
       position: [tetromino.position[0] + offset[0], tetromino.position[1] + offset[1] ]
     });
-    return !outOfBounds(maybe, game.height, game.width) && !Object.keys( findCollisions(maybe, rest) ).length; // TODO - collision type! :D
+    return !outOfBounds(maybe, game.width, game.height) && !Object.keys( findCollisions(maybe, rest) ).length; // TODO - collision type! :D
   });
 
   if (offset) {
