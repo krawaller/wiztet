@@ -27,7 +27,7 @@ export const stringifyRender = (rnd: Rendering, width: number, height: number): 
   ).reverse();
 };
 
-export const makeGame = (tetrominoes: Tetromino[], height = 5, width = 5, ground = false): Game => ({
+export const makeGame = (tetrominoes: Tetromino[], width = 5, height = 5, ground = false): Game => ({
   ground: ground ? Array.from(Array(width)).reduce((mem, u, i) => ({...mem, [i+'_'+i]: {type: 'block', colour: 'grey'}}), {}) : {},
   tetrominoes: tetrominoes.reduce((mem, tetr) => ({
     ...mem,
