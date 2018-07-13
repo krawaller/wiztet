@@ -1,7 +1,7 @@
 
 import {Game, PetrifyAction} from '../../../types';
 import { renderTetromino } from './render.tetromino';
-import { detectCollision } from './detect.collision';
+import { findCollisions } from './find.collisions';
 import { outOfBounds } from './detect.outofbounds';
 import { renderGround } from './render.ground';
 
@@ -20,7 +20,7 @@ export const petrify = (game: Game, action: PetrifyAction): Game => {
   do {
     const renderedGround = renderGround(game.ground);
     petrified = Object.keys(game.tetrominoes).filter(key =>
-       outOfBounds(steppedDown[key], game.width, game.height) || detectCollision(steppedDown[key], renderedGround).length
+       outOfBounds(steppedDown[key], game.width, game.height) || findCollisions(steppedDown[key], renderedGround).length
     );
     game = {
       ...game,
