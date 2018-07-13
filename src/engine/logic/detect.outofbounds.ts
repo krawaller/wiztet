@@ -7,6 +7,6 @@ export const outOfBounds = (rnd: Rendering, height: number, width: number): bool
   // TODO - filter out Nothing
   return !!Object.keys(rnd).find(pos => {
     const [x, y] = pos.split('_').map(i => +i);
-    return x < 0 || x > width || y < 0 || y > height;
+    return x < 0 || x >= width || y < 0 || y >= height;
   });
 }
