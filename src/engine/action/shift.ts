@@ -2,7 +2,6 @@
 import {Game, ShiftAction, Position} from '../../../types';
 import { renderTetromino } from '../render/render.tetromino';
 import { outOfBounds } from '../helpers/detect.outofbounds';
-import { renderGround } from '../render/render.ground';
 import { renderGame } from '../render/render.game';
 import { findCollisions } from '../helpers/find.collisions';
 
