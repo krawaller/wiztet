@@ -1,6 +1,6 @@
 import { TetrominoId, RotationDirection, ShiftDirection } from '.';
 
-export type Action = RotateAction | PetrifyAction | ShiftAction;
+export type Action = RotateAction | PetrifyAction | ShiftAction | GravityAction;
 
 export type RotateAction = {
   type: 'ROTATEACTION',
@@ -17,3 +17,7 @@ export type ShiftAction = {
   target: TetrominoId,
   dir: ShiftDirection
 };
+
+export type GravityAction = {
+  type: 'GRAVITYACTION'
+}
